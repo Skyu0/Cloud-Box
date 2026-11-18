@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cloud Box</title>
+<meta name="theme-color" content="#000000"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Cloud Box">
+<link rel="icon" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=Bebas+Neue&family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;700&family=Poppins:wght@400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="style.css"></head><body>
+<header><img src="icons/icon-192.png" alt=""><div><b>Cloud Box</b><span>Recreate any design in your brand</span></div><div id="who" hidden><span id="whoe"></span><button class="o" id="lo" style="padding:6px 10px">Log out</button></div></header>
+<main>
+<section id="auth"><h2>Welcome to Cloud Box</h2><form id="aform"><div class="row"><label>Email</label><input id="em" type="email" autocomplete="email" required></div><div class="row"><label>Password (6+ characters)</label><input id="pw" type="password" minlength="6" autocomplete="current-password" required></div><div class="bar"><button id="bl" type="submit">Log in</button><button class="o" id="bs" type="button">Create account</button></div></form><div id="amsg" class="msg bad" hidden></div><p id="amode" class="small"></p></section>
+<div id="app" hidden><nav class="tabs"><button class="o on" id="tab-s">Studio</button><button class="o" id="tab-l">Library</button></nav>
+<div id="warn" class="msg bad" hidden>AI scanning isn’t connected yet. Set AI_ENDPOINT in config.js (see README).</div>
+
+<section id="s1"><label class="drop"><input id="ref" type="file" accept="image/*"><b>Upload a design to emulate</b><small>PNG or JPG. Posters, flyers and social posts with clean layouts work best.</small></label></section>
+
+<section id="s2" hidden><div class="msg" id="busy">Reading the design… this can take up to a minute.</div></section>
+
+<section id="s3" hidden>
+<img id="refimg" class="prev" alt="Reference design">
+<div id="verdict" class="msg"></div>
+<div id="formwrap">
+<h2>Your content</h2><div id="fields"></div>
+<h2>Colors in this design</h2><p style="color:#a3a3a3;margin:0 0 10px;font-size:14px">Pick a new color for each one, or leave it as is.</p><div id="pal" class="pal"></div>
+<div class="bar" style="margin-top:18px"><button id="go">Create my design</button></div>
+</div>
+<div class="bar"><button class="o" id="again">Try another design</button></div>
+</section>
+
+<section id="s4" hidden>
+<div class="bar">
+<button class="o" id="back">← Content</button>
+<button class="o" id="addt">Add text</button><button class="o" id="libbtn">Library</button>
+<select id="ff" class="tool" disabled></select>
+<input id="fs" class="tool" type="number" min="6" max="400" style="width:80px" disabled>
+<input id="cl" class="tool" type="color" disabled>
+<button class="o tool" id="fw" disabled>Forward</button><button class="o tool" id="bw" disabled>Back</button><button class="o tool" id="del" disabled>Delete</button>
+<label class="btn o" style="font-weight:400">Upload font<input id="fup" type="file" accept=".ttf,.otf,.woff,.woff2" hidden></label>
+</div>
+<div id="libpanel" class="msg" hidden></div><div id="holder"></div>
+<div class="bar">
+<select id="fmt"><option value="png">PNG</option><option value="jpeg">JPEG</option><option value="pdf">PDF</option></select>
+<button class="o tool" id="exs" disabled>Export selected</button>
+<button id="exa">Export whole design</button>
+</div>
+<div id="note" class="msg" hidden></div>
+</section>
+<section id="lib" hidden><h2>My library</h2><div id="libpage"></div></section></div></main>
+<script src="config.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script><script src="auth.js"></script><script src="app.js"></script><script src="library.js"></script></body></html>
